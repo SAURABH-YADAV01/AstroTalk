@@ -1,0 +1,138 @@
+const ZodiacSigns = [
+  "Aries","Taurus","Gemini","Cancer","Leo","Virgo",
+  "Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"
+];
+
+const Compliments = [
+  "Your energy lights up any space you enter.",
+  "You have a naturally calming presence.",
+  "Your intuition is truly remarkable.",
+  "People feel safe and understood around you.",
+  "Your determination inspires others.",
+  "You radiate confidence effortlessly.",
+  "Your kindness has a powerful ripple effect.",
+  "You have a beautiful way of seeing the world.",
+  "Your creativity knows no limits.",
+  "You make others feel valued and appreciated.",
+  "Your smile can brighten anyone’s day.",
+  "Your inner strength is admirable.",
+  "You possess a magnetic personality.",
+  "Your wisdom is beyond your years.",
+  "You have a heart that truly cares.",
+  "You stay calm under pressure effortlessly.",
+  "People trust you easily—and for good reason.",
+  "You bring balance wherever you go.",
+  "Your positivity is contagious.",
+  "You uplift everyone around you.",
+  "Your presence alone brings comfort.",
+  "You are incredibly thoughtful.",
+  "Your perspective is refreshing.",
+  "You have a rare authenticity.",
+  "Your ambition inspires others.",
+  "You spread warmth naturally.",
+  "You always improve any situation.",
+  "Your resilience makes you unstoppable.",
+  "You have an inspiring aura.",
+  "You are genuinely unforgettable."
+];
+
+const VictimCard = [
+  "You give so much, yet people rarely notice your efforts.",
+  "You try to keep the peace, yet still get misunderstood.",
+  "You carry burdens silently while others expect more.",
+  "Your kindness often gets taken for granted.",
+  "You stay loyal to those who wouldn’t do the same.",
+  "You forgive easily, even when it hurts you.",
+  "You put others first and still get blamed.",
+  "You stay strong but no one asks if you're okay.",
+  "You support others who vanish when you need help.",
+  "You explain yourself to people who never listen.",
+  "You give your best yet people notice your mistakes.",
+  "You try to move on but the past finds you.",
+  "You love deeply but aren’t always valued.",
+  "You help everyone yet feel alone when you need help.",
+  "You tolerate what others couldn’t handle.",
+  "You try to make people happy but become the villain.",
+  "You say you're fine because no one notices otherwise.",
+  "You stay patient with people who wouldn’t do the same.",
+  "You carry emotions that aren’t yours.",
+  "You get blamed for walking away from what hurt you."
+];
+
+const Recommendation = [
+  "Trust your intuition.",
+  "Set boundaries without guilt.",
+  "Focus on progress, not perfection.",
+  "Let go of what drains you.",
+  "Reconnect with what gives you joy.",
+  "Be patient—your time is coming.",
+  "Take small steps daily.",
+  "Be honest about what you want.",
+  "Prioritize your peace.",
+  "Celebrate small victories.",
+  "Don’t rush your healing.",
+  "Stay open to opportunities.",
+  "Replace overthinking with action.",
+  "Invest in nourishing relationships.",
+  "Rest without guilt.",
+  "Stay consistent.",
+  "Detach from what you can't control.",
+  "Speak kindly to yourself.",
+  "Follow alignment, not pressure.",
+  "Learn to say no.",
+  "Stay around people who help you grow.",
+  "Start even if you're unsure.",
+  "Seek clarity over chaos.",
+  "Act like your highest self.",
+  "Choose peace.",
+  "Keep your vision clear.",
+  "Forgive your past self.",
+  "Stay grounded.",
+  "Honor your feelings.",
+  "Embrace change."
+];
+
+const Prediction = [
+  "A new opportunity is coming.",
+  "Someone from your past will bring clarity.",
+  "Good news is on the way.",
+  "Your finances will improve soon.",
+  "A meaningful connection is approaching.",
+  "Your hard work will finally pay off.",
+  "A decision will go in your favor.",
+  "A new motivation will rise.",
+  "A conversation will change your perspective.",
+  "A long-standing issue will resolve.",
+  "New beginnings will bring balance.",
+  "Opportunities will flow toward you.",
+  "Your confidence will grow.",
+  "A relationship will improve.",
+  "You’re about to see your strength.",
+  "A dream you had will take shape.",
+  "Someone will show deep appreciation.",
+  "Your patience will be rewarded.",
+  "A lucky moment will confirm you’re on the right path.",
+  "Your next chapter brings clarity and peace."
+];
+
+const form = document.getElementById('astroForm');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("fname").value;
+    const surname = document.getElementById("Sname").value;
+    const Day = parseInt(document.getElementById("Day").value);
+    const Month = parseInt(document.getElementById("month").value);
+    const Year = parseInt(document.getElementById("year").value);
+
+    const text =
+`Hi ${name} ${surname}, Your Zodiac sign is ${ZodiacSigns[Month - 1]}.
+
+${Compliments[(Day - 1) % 30]}
+${VictimCard[Year % 20]}
+${Recommendation[(Day * Month) % 30]}
+${Prediction[Year % 20]}`;
+
+    document.getElementById("result").textContent = text;
+});
